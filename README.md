@@ -2,6 +2,10 @@
 
 <img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/visual.jpg" width="400px" >
 
+## Fork
+
+This fork adds Permission screens to the framework. Instead of prompting the user to allow access to photo library and/or camera it presents a screen with explanatory text.
+
 ## YPImagePicker
 
 YPImagePicker is an instagram-like photo/video picker for iOS written in pure Swift. It is feature-rich and highly customizable to match your App's requirements.
