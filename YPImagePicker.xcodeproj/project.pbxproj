@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551543E4224760C50085B1E4 /* YPPermissionConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551543E3224760C50085B1E4 /* YPPermissionConfig.swift */; };
+		557AB55122413C8400285A51 /* YPPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557AB55022413C8400285A51 /* YPPermissionVC.swift */; };
+		557AB5532241405300285A51 /* YPPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557AB5522241405300285A51 /* YPPermissionView.swift */; };
 		8458057421819B95004F241C /* YPImagePickerLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99C6D6991F1FB5C100711DB2 /* YPImagePickerLocalizable.strings */; };
 		99019E4C2018CCD6007325C2 /* YPBottomPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99019E4B2018CCD6007325C2 /* YPBottomPagerView.swift */; };
 		99019E4E2018CD31007325C2 /* YPPagerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99019E4D2018CD31007325C2 /* YPPagerMenu.swift */; };
@@ -99,6 +102,9 @@
 		3B0E1B962070669B0048E95B /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/YPImagePickerLocalizable.strings; sourceTree = "<group>"; };
 		4EA67521208A45080076D4E3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/YPImagePickerLocalizable.strings; sourceTree = "<group>"; };
 		52412A931CA6114A0073C4BE /* YPImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YPImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		551543E3224760C50085B1E4 /* YPPermissionConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPPermissionConfig.swift; sourceTree = "<group>"; };
+		557AB55022413C8400285A51 /* YPPermissionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPPermissionVC.swift; sourceTree = "<group>"; };
+		557AB5522241405300285A51 /* YPPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPPermissionView.swift; sourceTree = "<group>"; };
 		5F01F9DC20DCC494007432E4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/YPImagePickerLocalizable.strings"; sourceTree = "<group>"; };
 		65BBCBAE2101BA4200277809 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/YPImagePickerLocalizable.strings; sourceTree = "<group>"; };
 		7157B4CA206FD7270004EF6C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/YPImagePickerLocalizable.strings"; sourceTree = "<group>"; };
@@ -228,6 +234,16 @@
 				52412A931CA6114A0073C4BE /* YPImagePicker.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		557AB54F22413C4A00285A51 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				557AB55022413C8400285A51 /* YPPermissionVC.swift */,
+				557AB5522241405300285A51 /* YPPermissionView.swift */,
+				551543E3224760C50085B1E4 /* YPPermissionConfig.swift */,
+			);
+			path = Permission;
 			sourceTree = "<group>";
 		};
 		99019E4A2018CCB8007325C2 /* BottomPager */ = {
@@ -431,6 +447,7 @@
 				99C6D69E1F1FB5C100711DB2 /* Gallery */,
 				99C6D6A61F1FB5C100711DB2 /* Photo */,
 				99C6D6B61F1FB5C100711DB2 /* Video */,
+				557AB54F22413C4A00285A51 /* Permission */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -596,6 +613,7 @@
 				EB473E17208E192800D16105 /* URL+Extensions.swift in Sources */,
 				EB473E2B208E1ECB00D16105 /* AVCaptureDevice+Extensions.swift in Sources */,
 				99A3C91020319227008D7E23 /* YPCropView.swift in Sources */,
+				557AB5532241405300285A51 /* YPPermissionView.swift in Sources */,
 				99C6D6D11F1FB5C100711DB2 /* YPImagePicker.swift in Sources */,
 				99019E4C2018CCD6007325C2 /* YPBottomPagerView.swift in Sources */,
 				99C6D6BB1F1FB5C100711DB2 /* YPLibraryVC.swift in Sources */,
@@ -624,6 +642,7 @@
 				EB473E21208E1BF400D16105 /* YPTrimError.swift in Sources */,
 				EB584C03207B990200265B38 /* AVFoundation+Extensions.swift in Sources */,
 				99C6D6BF1F1FB5C100711DB2 /* YPGridView.swift in Sources */,
+				557AB55122413C8400285A51 /* YPPermissionVC.swift in Sources */,
 				99C6D6D01F1FB5C100711DB2 /* YPVideoCaptureVC.swift in Sources */,
 				99A052A31F20B4CA005600B3 /* YPAlbumsManager.swift in Sources */,
 				EB19A8F420AC41AE007F88D8 /* AVAssetTrack+Extensions.swift in Sources */,
@@ -638,6 +657,7 @@
 				99A3C91220319231008D7E23 /* YPCropVC.swift in Sources */,
 				EB584BFB207B870F00265B38 /* YPSelectionsGalleryVC.swift in Sources */,
 				99019E512018CDED007325C2 /* YPImageSize.swift in Sources */,
+				551543E4224760C50085B1E4 /* YPPermissionConfig.swift in Sources */,
 				99CF6D25201B727900487F77 /* YPLibraryVC+PanGesture.swift in Sources */,
 				99CF6D27201B739600487F77 /* YPAlerts.swift in Sources */,
 				99C6D6CF1F1FB5C100711DB2 /* YPPickerVC.swift in Sources */,

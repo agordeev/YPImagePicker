@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stevia
 import Photos
 
 public class YPLibraryVC: UIViewController, YPPermissionCheckable {
@@ -175,11 +176,27 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
     }
     
     // MARK: - Permissions
+
+    private func presentPermissionView(config: YPPermissionConfig, block: @escaping (Bool) -> Void) {
+        let viewController = YPPermissonVC(config: config)
+        viewController.dismissViewController = {
+            viewController.willMove(toParent: nil)
+            viewController.view.removeFromSuperview()
+            viewController.removeFromParent()
+        }
+        viewController.actionCompleted = block
+        addChild(viewController)
+        view.sv(viewController.view)
+        viewController.didMove(toParent: self)
+        viewController.view.fillContainer()
+    }
     
     func doAfterPermissionCheck(block:@escaping () -> Void) {
         checkPermissionToAccessPhotoLibrary { hasPermission in
             if hasPermission {
                 block()
+            } else {
+                self.doAfterPermissionCheck(block: block)
             }
         }
     }
@@ -192,6 +209,8 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
             if hasPermission && !strongSelf.initialized {
                 strongSelf.initialize()
                 strongSelf.initialized = true
+            } else {
+                strongSelf.checkPermission()
             }
         }
     }
@@ -205,18 +224,19 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
         case .authorized:
             block(true)
         case .restricted, .denied:
-            let popup = YPPermissionDeniedPopup()
-            let alert = popup.popup(cancelBlock: {
-                block(false)
-            })
-            present(alert, animated: true, completion: nil)
+//            let popup = YPPermissionDeniedPopup()
+//            let alert = popup.popup(cancelBlock: {
+//                block(false)
+//            })
+            presentPermissionView(config: .declinedPermissionLibraryConfig, block: block)
         case .notDetermined:
             // Show permission popup and get new status
-            PHPhotoLibrary.requestAuthorization { s in
-                DispatchQueue.main.async {
-                    block(s == .authorized)
-                }
-            }
+//            PHPhotoLibrary.requestAuthorization { s in
+//                DispatchQueue.main.async {
+//                    block(s == .authorized)
+//                }
+//            }
+            presentPermissionView(config: .askForPermissionLibraryConfig, block: block)
         }
     }
     
