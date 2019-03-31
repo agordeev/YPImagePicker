@@ -176,20 +176,6 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
     }
     
     // MARK: - Permissions
-
-    private func presentPermissionView(config: YPPermissionConfig, block: @escaping (Bool) -> Void) {
-        let viewController = YPPermissonVC(config: config)
-        viewController.dismissViewController = {
-            viewController.willMove(toParent: nil)
-            viewController.view.removeFromSuperview()
-            viewController.removeFromParent()
-        }
-        viewController.actionCompleted = block
-        addChild(viewController)
-        view.sv(viewController.view)
-        viewController.didMove(toParent: self)
-        viewController.view.fillContainer()
-    }
     
     func doAfterPermissionCheck(block:@escaping () -> Void) {
         checkPermissionToAccessPhotoLibrary { hasPermission in

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-protocol YPPermissionCheckable {
+protocol YPPermissionCheckable: YPPermissionPresentable {
     func checkPermission()
 }
 
@@ -23,6 +23,8 @@ extension YPPermissionCheckable where Self: UIViewController {
         checkPermissionToAccessVideo { hasPermission in
             if hasPermission {
                 block()
+            } else {
+                self.doAfterPermissionCheck(block: block)
             }
         }
     }
@@ -34,17 +36,9 @@ extension YPPermissionCheckable where Self: UIViewController {
         case .authorized:
             block(true)
         case .restricted, .denied:
-            let popup = YPPermissionDeniedPopup()
-            let alert = popup.popup(cancelBlock: {
-                block(false)
-            })
-            present(alert, animated: true, completion: nil)
+            presentPermissionView(config: .declinedPermissionCameraConfig, block: block)
         case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: { granted in
-                DispatchQueue.main.async {
-                    block(granted)
-                }
-            })
+            presentPermissionView(config: .askForPermissionCameraConfig, block: block)
         }
     }
 }
