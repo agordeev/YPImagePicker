@@ -224,18 +224,9 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
         case .authorized:
             block(true)
         case .restricted, .denied:
-//            let popup = YPPermissionDeniedPopup()
-//            let alert = popup.popup(cancelBlock: {
-//                block(false)
-//            })
             presentPermissionView(config: .declinedPermissionLibraryConfig, block: block)
         case .notDetermined:
             // Show permission popup and get new status
-//            PHPhotoLibrary.requestAuthorization { s in
-//                DispatchQueue.main.async {
-//                    block(s == .authorized)
-//                }
-//            }
             presentPermissionView(config: .askForPermissionLibraryConfig, block: block)
         }
     }
