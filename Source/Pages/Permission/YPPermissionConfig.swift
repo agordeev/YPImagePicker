@@ -44,7 +44,10 @@ extension YPPermissionConfig {
     })
 
     static let declinedPermissionLibraryConfig = YPPermissionConfig(title: "You have denied Photo Library permission",
-                                                                    description: "Please allow the access to Photo Library. This lets our app to share photos from your library and save photos to your camera roll",
+                                                                    description:
+        """
+        Please allow the access to Photo Library. This lets our app to share photos from your library and save photos to your camera roll
+        """,
                                                                     actionButtonTitle: "Open Settings",
                                                                     actionBlock: { completionHandler in
                                                                         DispatchQueue.main.async {
