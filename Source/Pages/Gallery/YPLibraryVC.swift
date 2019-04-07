@@ -195,7 +195,8 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
             if hasPermission && !strongSelf.initialized {
                 strongSelf.initialize()
                 strongSelf.initialized = true
-            } else {
+            }
+            if !hasPermission {
                 strongSelf.checkPermission()
             }
         }
