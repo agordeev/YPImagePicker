@@ -192,21 +192,6 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
         stopAll()
     }
     
-    @objc
-    func navBarTapped() {
-        let vc = YPAlbumVC(albumsManager: albumsManager)
-        let navVC = UINavigationController(rootViewController: vc)
-        
-        vc.didSelectAlbum = { [weak self] album in
-            self?.libraryVC?.setAlbum(album)
-            self?.libraryVC?.title = album.title
-            self?.libraryVC?.refreshMediaRequest()
-            self?.setTitleViewWithTitle(aTitle: album.title)
-            self?.dismiss(animated: true, completion: nil)
-        }
-        present(navVC, animated: true, completion: nil)
-    }
-    
     func setTitleViewWithTitle(aTitle: String) {
         let titleView = UIView()
         titleView.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
@@ -242,18 +227,11 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
                 arrow.tintColor = foregroundColor
             }
             
-            let button = UIButton()
-            button.addTarget(self, action: #selector(navBarTapped), for: .touchUpInside)
-            button.setBackgroundColor(UIColor.white.withAlphaComponent(0.5), forState: .highlighted)
-            
             titleView.sv(
-                label,
-                arrow,
-                button
+                label
             )
-            button.fillContainer()
-            |-(>=8)-label.centerHorizontally()-arrow-(>=8)-|
-            align(horizontally: label-arrow)
+            |-(>=8)-label.centerHorizontally()-(>=8)-|
+            align(horizontally: label)
         }
         
         label.firstBaselineAnchor.constraint(equalTo: titleView.bottomAnchor, constant: -14).isActive = true
